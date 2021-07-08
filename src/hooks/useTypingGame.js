@@ -38,12 +38,9 @@ function useTypingGame() {
   }
 
   function removeEls() {
-    setTimeout(() => {
-      newEl.remove();
-      aboveIcon.remove();
-    }, 4000);
+    newEl.remove();
+    aboveIcon.remove();
   }
-
   function displayInput() {
     inputNum.current.style.display = 'block';
   }
@@ -51,7 +48,9 @@ function useTypingGame() {
   function startGame() {
     setIsTimeRunning(true);
     setWordCount(0);
-    setTimeRemaining(5);
+    inputNum.current.value <= 0
+      ? setTimeRemaining(5)
+      : setTimeRemaining(inputNum.current.value);
     setText('');
     textBox.current.disabled = false;
     textBox.current.focus();

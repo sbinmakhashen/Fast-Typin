@@ -39,17 +39,20 @@ function Typing() {
         onChange={numChange}
         ref={inputNum}
       />
-      <div className='time-container'>
-        <h2
-          className='time'
-          ref={timeRemRef}
-          onClick={displayInput}
+
+      {isTimeRunning ? (
+        <h2 className='time'>{timeRemaining} seconds left</h2>
+      ) : (
+        <div
+          className='time-container'
           onMouseEnter={showInput}
           onMouseLeave={removeEls}
         >
-          Time remaining: {timeRemaining}s
-        </h2>
-      </div>
+          <h2 className='time' ref={timeRemRef} onClick={displayInput}>
+            Time remaining: {timeRemaining}s
+          </h2>
+        </div>
+      )}
 
       <button onClick={startGame} className='btn' disabled={isTimeRunning}>
         {timeRemaining === 0 ? 'Try again' : 'START'}
