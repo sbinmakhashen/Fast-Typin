@@ -3,12 +3,12 @@ import React, { useState, useEffect, useRef } from 'react';
 function useTypingGame() {
   const [text, setText] = useState('');
   const [wordCount, setWordCount] = useState(0);
+  const [charCount, setCharCount] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(5);
   const [isTimeRunning, setIsTimeRunning] = useState(false);
   const textBox = useRef(null);
   const inputNum = useRef(null);
   const timeRemRef = useRef(null);
-
   function handleChange(e) {
     const { value } = e.target;
     setText(value);
@@ -48,6 +48,7 @@ function useTypingGame() {
   function startGame() {
     setIsTimeRunning(true);
     setWordCount(0);
+    setCharCount(0);
     inputNum.current.value <= 0
       ? setTimeRemaining(5)
       : setTimeRemaining(inputNum.current.value);
@@ -61,8 +62,8 @@ function useTypingGame() {
   function endGame() {
     setIsTimeRunning(false);
     setTimeRemaining(0);
+    setCharCount(text.length);
     setWordCount(calcWordCount());
-
     textBox.current.disabled = true;
     document.body.style.backgroundColor = '#282c34';
   }
@@ -81,6 +82,7 @@ function useTypingGame() {
     handleChange,
     text,
     wordCount,
+    charCount,
     timeRemaining,
     startGame,
     textBox,

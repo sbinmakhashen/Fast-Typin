@@ -5,7 +5,7 @@ function App() {
   return (
     <div className='App'>
       <header>
-        <h1 className='title'>How fast can you type?</h1>
+        <h1 className='gameOn'>How fast can you type?</h1>
       </header>
       <main>
         <Typing />
