@@ -58,7 +58,6 @@ function Typing() {
         {timeRemaining === 0 ? 'Try again' : 'START'}
       </button>
 
-      {/* <img src={Counting} width='150' height='90' /> */}
       {isTimeRunning ? (
         <h1 className='gameOn' style={{ color: '#fff' }}>
           Counting...
