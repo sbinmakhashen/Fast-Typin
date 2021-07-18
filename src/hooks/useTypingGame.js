@@ -20,6 +20,20 @@ function useTypingGame() {
     return wLength.filter((word) => word !== '').length;
   }
 
+  // sample text
+  function sampleText() {
+    const sampleMessages = [
+      'As a manager, we need to understand the other person justification and then come up with alternatives.',
+      'We may then choose the right alternative. However, in general, we choose the first or the emotionally satisfying one. Typically people stop at this level of analysis and start to act.',
+      'But a good manager would think of the following also: Will the action guarantee the consequence? What about other unintended consequences? This requires a certain experience.',
+      'Are we capable of doing this action? Intention and the selection of the most ideal alternative do not guarantee execution, if we do not have the skills and the experience. Most motivational tactics fail, because without execution capability, they is only wishful thinking.',
+    ];
+    const randomNum = Math.floor(Math.random() * sampleMessages.length);
+    document.getElementById(
+      'p-sample-container'
+    ).innerHTML = `<p class='p-sample'>${sampleMessages[randomNum]}</p>`;
+  }
+
   function numChange(e) {
     const { value } = e.target;
     value < 0 ? 0 : setTimeRemaining(value);
@@ -31,22 +45,29 @@ function useTypingGame() {
   }
 
   // show this message when the user clicks the space keyword
-  const parentEl = document.querySelector('.header');
-  const newEl = document.createElement('strong');
   function errorMsg() {
-    newEl.innerHTML = 'You cant start the timer with an empty string!!';
-    newEl.classList.add('new-el');
-    document.body.insertBefore(newEl, parentEl);
+    const error = document.querySelector('.errorMsg');
+    error.style.display = 'block';
+    textBox.current.disabled = true;
+    setTimeout(() => {
+      error.style.display = 'none';
+      textBox.current.disabled = false;
+      if (textBox.current.disabled) {
+        textBox.current.placeholder = 'this is ';
+      }
+      textBox.current.focus();
+      setIsTimeRunning(false);
+      setText('');
+    }, 3000);
   }
-
   // when game starts run this function
   function startGame() {
     setIsTimeRunning(true);
     setWordCount(0);
     setCharCount(0);
-    setText('');
     textBox.current.focus();
     inputNum.current.style.display = 'none';
+    document.querySelector('.gameOn').style.display = 'none';
     document.body.style.backgroundColor = 'green';
   }
   // when time isTimeremaing is equal to false then run function below
@@ -58,6 +79,7 @@ function useTypingGame() {
     textBox.current.focus();
     const textBoxDisabled = (textBox.current.disabled = true);
     textBoxDisabled;
+    document.querySelector('.gameOn').style.display = 'block';
     setTimeout(() => {
       textBox.current.disabled = false;
       textBox.current.focus();
@@ -67,6 +89,12 @@ function useTypingGame() {
   }
 
   useEffect(() => {
+    if (textBox.current) {
+      textBox.current.focus();
+    }
+  }, []);
+
+  useEffect(() => {
     if (isTimeRunning && timeRemaining > 0) {
       setTimeout(() => {
         setTimeRemaining((prev) => prev - 1);
@@ -74,12 +102,12 @@ function useTypingGame() {
     } else if (timeRemaining === 0) {
       endGame();
     }
-    textBox.current.focus();
   }, [timeRemaining, isTimeRunning]);
 
   return {
     handleChange,
     text,
+    sampleText,
     wordCount,
     charCount,
     timeRemaining,

@@ -24,9 +24,22 @@ h2 {
   font-size: 2rem;
   margin: 1rem 0;
 }
+.error {
+  text-align: center;
+  margin: 2rem 0;
+}
+.errorMsg {
+  display: none;
+  background-color: darkred;
+  padding: 1rem;
+  font-size: 1.4rem;
+  border-radius: 2rem;
+  margin: auto;
+}
 
 .gameOn {
   font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
 }
 .typing {
   text-align: center;
@@ -46,25 +59,52 @@ h2 {
   cursor: not-allowed;
 }
 
-.btn {
-  border: none;
-  outline: none;
-  padding: 0.8rem 2rem;
-  cursor: pointer;
-  border-radius: 2rem;
-  font-size: 2rem;
+.typin-results {
+  margin-top: 3rem;
+  text-align: center;
 }
-.btn:active {
-  transform: scale(0.9);
-}
-.btn:disabled {
-  cursor: not-allowed;
+
+#container {
+  position: relative;
 }
 
 .time {
   padding: 1rem;
   cursor: pointer;
   margin: auto;
+}
+
+.tooltip {
+  visibility: hidden;
+  background-color: #000;
+  padding: 1rem;
+  position: absolute;
+  width: 400px;
+  text-align: center;
+  bottom: -3.4rem;
+  left: 15rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: default;
+  z-index: 1;
+}
+#container:hover .tooltip {
+  visibility: visible;
+}
+
+.close {
+  background-color: #333;
+  padding: 0.4rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.close:hover {
+  transition: all 0.4s ease-in-out;
+  color: red;
 }
 
 #num {
@@ -82,40 +122,79 @@ h2 {
   display: none;
 }
 
-.newEL {
-  margin: 1rem 0;
+#sample-text {
   background-color: #313d57;
-  color: #fff;
-  border-radius: 2rem;
-  font-size: 1.5rem;
   padding: 1rem;
+  border-radius: 2rem;
+  width: 80vh;
+  height: 230px;
+  margin: auto;
+  position: relative;
 }
-
-i {
+.p-title {
   font-size: 2rem;
-  animation: pointUp 1s alternate infinite ease-in-out;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 1rem;
 }
 
-@keyframes pointUp {
-  100% {
-    transform: translateY(-1rem);
+.p-sample {
+  font-size: 1.8rem;
+}
+
+.btn {
+  position: absolute;
+  top: 0;
+  right: 0.5rem;
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  margin: auto;
+  margin-top: 1rem;
+  display: block;
+  font-size: 1.2rem;
+}
+.btn:active {
+  transform: scale(0.9);
+}
+
+@media (max-width: 1024px) {
+  #sample-text {
+    width: 95%;
+    height: 220px;
   }
 }
 
-@media (max-width: 600px) {
-  .title {
-    font-size: 2.2rem;
+@media (max-width: 820px) {
+  .gameOn {
+    font-size: 1rem;
   }
   #text {
     font-size: 0.9rem;
+    width: 95%;
+  }
+  #sample-text {
+    width: 100%;
+    height: 195px;
+  }
+  .btn {
+    font-size: 0.7rem;
+    top: -0.2rem;
+  }
+  .p-title {
+    font-size: 1.4rem;
+    margin-right: 5rem;
   }
 
-  #num {
-    text-align: text;
-    width: 15%;
+  .p-sample {
+    font-size: 1rem;
   }
+}
 
-  .newEL {
-    font-size: 1.2rem;
+@media (max-width: 670px) {
+  .typin-results {
+    font-size: 1.4rem;
+    margin-top: 1rem;
   }
 }
