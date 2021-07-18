@@ -39,9 +39,17 @@ function useTypingGame() {
     value < 0 ? 0 : setTimeRemaining(value);
   }
 
+  function closeNumInput() {
+    inputNum.current.style.display = 'none';
+    document.querySelector('.num-close').style.display = 'none';
+  }
+
   function displayInput() {
     inputNum.current.style.display = 'block';
     tooltip.current.style.display = 'none';
+    document.querySelector('.num-close').style.display = 'block';
+    document.querySelector('.gameOn').style.display = 'none';
+    console.log(document.querySelector('.gameOn'));
   }
 
   // show this message when the user clicks the space keyword
@@ -68,6 +76,7 @@ function useTypingGame() {
     textBox.current.focus();
     inputNum.current.style.display = 'none';
     document.querySelector('.gameOn').style.display = 'none';
+    document.querySelector('.num-close').style.display = 'none';
     document.body.style.backgroundColor = 'green';
   }
   // when time isTimeremaing is equal to false then run function below
@@ -77,12 +86,13 @@ function useTypingGame() {
     setCharCount(text.length);
     setWordCount(calcWordCount());
     textBox.current.focus();
-    const textBoxDisabled = (textBox.current.disabled = true);
-    textBoxDisabled;
+    textBox.current.disabled = true;
+    textBox.current.placeholder = 'Please wait 3 seonds....';
     document.querySelector('.gameOn').style.display = 'block';
     setTimeout(() => {
       textBox.current.disabled = false;
       textBox.current.focus();
+      textBox.current.placeholder = 'Timer will start when you start typing...';
     }, 3000);
     setText('');
     document.body.style.backgroundColor = '#282c34';
@@ -117,6 +127,7 @@ function useTypingGame() {
     textBox,
     isTimeRunning,
     numChange,
+    closeNumInput,
     inputNum,
     tooltip,
     timeRemRef,

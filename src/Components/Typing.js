@@ -13,6 +13,7 @@ function Typing() {
     textBox,
     isTimeRunning,
     numChange,
+    closeNumInput,
     inputNum,
     tooltip,
     timeRemRef,
@@ -34,6 +35,7 @@ function Typing() {
         // onInput={startGame}
         placeholder='Timer will start when you start typing...'
       />
+      {/* for changing the remaining seconds */}
       <input
         className='inputNum'
         type='number'
@@ -43,6 +45,11 @@ function Typing() {
         onChange={numChange}
         ref={inputNum}
       />
+      {/* for closing the input */}
+      <p onClick={closeNumInput} className='num-close'>
+        X
+      </p>
+
       {isTimeRunning ? (
         <h2 className='time'>{timeRemaining} seconds left</h2>
       ) : (
@@ -64,7 +71,6 @@ function Typing() {
           </p>
         </div>
       )}
-
       {isTimeRunning ? (
         <h1 className='gameOn' style={{ color: '#fff' }}>
           Counting...

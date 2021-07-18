@@ -74,6 +74,10 @@ h2 {
   margin: auto;
 }
 
+.time:hover {
+  color: red;
+}
+
 .tooltip {
   visibility: hidden;
   background-color: #000;
@@ -116,6 +120,23 @@ h2 {
   margin: 1rem auto;
   width: 10%;
   text-align: center;
+  position: relative;
+}
+.num-close {
+  display: none;
+  position: absolute;
+  right: 52%;
+  top: 73%;
+  background-color: #555;
+  padding: 0.4rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.num-close:hover {
+  transition: all 0.4s ease-in-out;
+  color: red;
 }
 
 .inputNum {
