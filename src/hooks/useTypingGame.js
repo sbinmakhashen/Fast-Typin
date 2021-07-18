@@ -9,6 +9,7 @@ function useTypingGame() {
   const textBox = useRef(null);
   const inputNum = useRef(null);
   const timeRemRef = useRef(null);
+  const tooltip = useRef(null);
   function handleChange(e) {
     const { value } = e.target;
     setText(value);
@@ -24,47 +25,44 @@ function useTypingGame() {
     value < 0 ? 0 : setTimeRemaining(value);
   }
 
-  const newEl = document.createElement('h4');
-  const aboveIcon = document.createElement('i');
-  function showInput() {
-    const timeContianer = document.querySelector('.time-container');
-    newEl.className = 'newEL';
-    newEl.innerHTML =
-      ' Please click on "Time remaining" above to increase remaining seconds';
-    aboveIcon.className = 'far fa-hand-point-up';
-
-    timeContianer.appendChild(aboveIcon);
-    timeContianer.appendChild(newEl);
-  }
-
-  function removeEls() {
-    newEl.remove();
-    aboveIcon.remove();
-  }
   function displayInput() {
     inputNum.current.style.display = 'block';
+    tooltip.current.style.display = 'none';
   }
+
+  // show this message when the user clicks the space keyword
+  const parentEl = document.querySelector('.header');
+  const newEl = document.createElement('strong');
+  function errorMsg() {
+    newEl.innerHTML = 'You cant start the timer with an empty string!!';
+    newEl.classList.add('new-el');
+    document.body.insertBefore(newEl, parentEl);
+  }
+
   // when game starts run this function
   function startGame() {
     setIsTimeRunning(true);
     setWordCount(0);
     setCharCount(0);
-    inputNum.current.value <= 0
-      ? setTimeRemaining(5)
-      : setTimeRemaining(inputNum.current.value);
     setText('');
-    textBox.current.disabled = false;
     textBox.current.focus();
     inputNum.current.style.display = 'none';
     document.body.style.backgroundColor = 'green';
   }
-  // when time remaining is equal to 0 then run function below
+  // when time isTimeremaing is equal to false then run function below
   function endGame() {
     setIsTimeRunning(false);
-    setTimeRemaining(0);
+    setTimeRemaining(5);
     setCharCount(text.length);
     setWordCount(calcWordCount());
-    textBox.current.disabled = true;
+    textBox.current.focus();
+    const textBoxDisabled = (textBox.current.disabled = true);
+    textBoxDisabled;
+    setTimeout(() => {
+      textBox.current.disabled = false;
+      textBox.current.focus();
+    }, 3000);
+    setText('');
     document.body.style.backgroundColor = '#282c34';
   }
 
@@ -76,6 +74,7 @@ function useTypingGame() {
     } else if (timeRemaining === 0) {
       endGame();
     }
+    textBox.current.focus();
   }, [timeRemaining, isTimeRunning]);
 
   return {
@@ -85,13 +84,14 @@ function useTypingGame() {
     charCount,
     timeRemaining,
     startGame,
+    endGame,
+    errorMsg,
     textBox,
     isTimeRunning,
     numChange,
     inputNum,
+    tooltip,
     timeRemRef,
-    showInput,
-    removeEls,
     displayInput,
   };
 }
