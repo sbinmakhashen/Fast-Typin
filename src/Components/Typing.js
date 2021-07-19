@@ -51,7 +51,13 @@ function Typing() {
       </p>
 
       {isTimeRunning ? (
-        <h2 className='time'>{timeRemaining} seconds left</h2>
+        <h2 className='time'>
+          <span
+            style={timeRemaining <= 5 ? { color: 'red' } : { color: '#fff' }}
+          >
+            {timeRemaining} seconds left
+          </span>
+        </h2>
       ) : (
         <div id='container'>
           <div className='time-container'>

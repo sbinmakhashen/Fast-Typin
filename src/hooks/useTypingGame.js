@@ -42,6 +42,7 @@ function useTypingGame() {
   function closeNumInput() {
     inputNum.current.style.display = 'none';
     document.querySelector('.num-close').style.display = 'none';
+    document.querySelector('.gameOn').style.display = 'block';
   }
 
   function displayInput() {
@@ -57,12 +58,15 @@ function useTypingGame() {
     const error = document.querySelector('.errorMsg');
     error.style.display = 'block';
     textBox.current.disabled = true;
+    setText('');
+    textBox.current.placeholder = 'Please wait 3 seonds....';
+    console.log('error ');
+    document.querySelector('.gameOn').style.display = 'none';
     setTimeout(() => {
       error.style.display = 'none';
       textBox.current.disabled = false;
-      if (textBox.current.disabled) {
-        textBox.current.placeholder = 'this is ';
-      }
+      textBox.current.placeholder = 'Timer will start when you strat typing...';
+      document.querySelector('.gameOn').style.display = 'block';
       textBox.current.focus();
       setIsTimeRunning(false);
       setText('');
