@@ -68,13 +68,14 @@ h2 {
   padding: 1rem;
   cursor: pointer;
   margin: auto;
+  position: relative;
 }
 
 .time:hover {
   color: red;
 }
 
-.tooltip {
+.time-container.tooltip {
   visibility: hidden;
   background-color: #000;
   padding: 1rem;
@@ -116,13 +117,18 @@ h2 {
   margin: 1rem auto;
   width: 10%;
   text-align: center;
+}
+.num-container {
   position: relative;
+}
+.num-container.num-close {
+  display: none;
+  position: absolute;
 }
 .num-close {
   display: none;
-  position: absolute;
-  right: 52%;
-  top: 73%;
+  width: 10%;
+  margin: auto;
   background-color: #555;
   padding: 0.4rem;
   font-size: 1rem;
@@ -194,6 +200,10 @@ h2 {
   #sample-text {
     width: 100%;
     height: 195px;
+  }
+  .num-close {
+    right: 43%;
+    top: 66%;
   }
   .btn {
     font-size: 0.7rem;

@@ -36,19 +36,21 @@ function Typing() {
         placeholder='Timer will start when you start typing...'
       />
       {/* for changing the remaining seconds */}
-      <input
-        className='inputNum'
-        type='number'
-        name='num'
-        id='num'
-        value={timeRemaining}
-        onChange={numChange}
-        ref={inputNum}
-      />
-      {/* for closing the input */}
-      <p onClick={closeNumInput} className='num-close'>
-        X
-      </p>
+      <div className='num-container'>
+        <input
+          className='inputNum'
+          type='number'
+          name='num'
+          id='num'
+          value={timeRemaining}
+          onChange={numChange}
+          ref={inputNum}
+        />
+        {/* for closing the input */}
+        <p onClick={closeNumInput} className='num-close'>
+          X
+        </p>
+      </div>
 
       {isTimeRunning ? (
         <h2 className='time'>
