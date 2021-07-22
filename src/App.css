@@ -9,10 +9,6 @@
 body {
   background-color: #282c34;
   color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 h1 {
@@ -147,8 +143,8 @@ h2 {
   background-color: #313d57;
   padding: 1rem;
   border-radius: 2rem;
-  width: 80vh;
-  height: 230px;
+  width: 80%;
+  height: 100%;
   margin: auto;
   position: relative;
 }
