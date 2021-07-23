@@ -74,6 +74,7 @@ function Typing() {
             >
               X
             </span>
+            <div className='t'></div>
             Please click on "Time remaining" above to increase remaining
             seconds'. The timer is set to 5 sec by default
           </p>

@@ -75,15 +75,15 @@ h2 {
   color: red;
 }
 
-.time-container.tooltip {
+.tooltip {
   visibility: hidden;
   background-color: #000;
-  padding: 1rem;
+  padding: 0.9rem;
   position: absolute;
   width: 400px;
   text-align: center;
-  bottom: -3.4rem;
-  left: 15rem;
+  top: 80%;
+  left: 30%;
   font-size: 1rem;
   border-radius: 2rem;
   cursor: default;
@@ -217,11 +217,23 @@ h2 {
   .p-sample {
     font-size: 1rem;
   }
+
+  .tooltip {
+    font-size: 0.8rem;
+    left: 25%;
+    top: 80%;
+  }
 }
 
 @media (max-width: 670px) {
   .typin-results {
     font-size: 1.4rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
+  }
+
+  .tooltip {
+    font-size: 0.8rem;
+    left: 10%;
+    padding: 0.5rem;
   }
 }
