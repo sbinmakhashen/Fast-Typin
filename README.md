@@ -9,4 +9,7 @@
 <h1 align='center'>👇</h1>
 
 ---
-
+### The user can start by adjusting the timer, the timer is set to 5 seconds by default. 
+### To adjust the timer hover over 'Time remaining' text as 
+### There are available sample texts for the user to take advantage of when typing, the user can change the sample text by clicking the 'change sample text' button
+![adjustRemainingTime](https://user-images.githubusercontent.com/48455909/128095820-9b5a1e8a-2ab2-40ca-ac5a-fd943a4f4566.PNG)
